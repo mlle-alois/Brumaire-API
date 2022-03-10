@@ -6,13 +6,12 @@ import { FaqModule } from './components/faq/faq.module';
 import { Faq } from './components/faq/entities/faq.entity';
 import { FaqType } from './components/faq-type/entities/faq-type.entity';
 import { FaqTypeModule } from './components/faq-type/faq-type.module';
-import { Admin } from './components/auth/admin.entity';
-import { AuthModule } from './components/auth/auth.module';
 import { S3Module } from 'nestjs-s3';
 import { MailingService } from './mailing/mailing.service';
 import { HttpModule } from '@nestjs/axios';
 import { Buyer } from './components/buyer/buyer.entity';
 import { BuyerModule } from './components/buyer/buyer.module';
+import { MailingModule } from './mailing/mailing.module';
 
 @Module({
   imports: [
@@ -32,7 +31,6 @@ import { BuyerModule } from './components/buyer/buyer.module';
         rejectUnauthorized: false,
       },
       entities: [
-        Admin,
         Buyer,
         Evaluation,
         Faq,
@@ -41,7 +39,6 @@ import { BuyerModule } from './components/buyer/buyer.module';
       synchronize: true, // This for development
       autoLoadEntities: true,
     }),
-    AuthModule,
     BuyerModule,
     EvaluationModule,
     FaqModule,

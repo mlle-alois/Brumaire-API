@@ -7,13 +7,10 @@ export class Buyer extends BaseEntity {
   id: number;
 
   @Column()
-  fistname: string;
+  firstname: string;
 
   @Column()
   lastname: string;
-
-  @Column()
-  password: string;
 
   @Column()
   email: string;
