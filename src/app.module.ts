@@ -5,6 +5,8 @@ import {FaqModule} from "./components/faq/faq.module";
 import {Evaluation} from "./components/evaluation/entities/evaluation.entity";
 import {FAQ} from "./components/evaluation/entities/FAQ.entity";
 import {FAQType} from "./components/evaluation/entities/FAQType.entity";
+import { AuthModule } from "./components/auth/auth.module";
+import { Admin } from "./components/auth/admin.entity";
 
 @Module({
     imports: [
@@ -16,14 +18,16 @@ import {FAQType} from "./components/evaluation/entities/FAQType.entity";
             },
             entities: [
                 Evaluation,
-                FAQ,
-                FAQType
+                //FAQ,
+                //FAQType,
+                Admin
             ],
             synchronize: true, // This for development
             autoLoadEntities: true,
         }),
-        EvaluationModule,
-        FaqModule
+        AuthModule,
+        //EvaluationModule,
+        //FaqModule
     ],
     controllers: [],
     providers: []
