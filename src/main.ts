@@ -24,7 +24,7 @@ async function bootstrap() {
   app.use(cookieParser());
 
   const port = process.env.PORT;
-  await app.listen(port, '127.0.0.1');
+  await app.listen(port);
   logger.log(`Application started on port ${port}`);
   logger.log(app.getUrl());
 }
