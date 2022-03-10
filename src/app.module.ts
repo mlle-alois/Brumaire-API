@@ -48,5 +48,4 @@ import { MailingModule } from './mailing/mailing.module';
   controllers: [],
   providers: [MailingService],
 })
-export class AppModule {
-}
+export class AppModule {}
