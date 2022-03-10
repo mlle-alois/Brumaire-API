@@ -13,7 +13,7 @@ export class BuyerRepository extends Repository<Buyer> {
         try {
             await buyer.save();
             return buyer;
-        } catch (e) {
+        } catch(e) {
             throw new ConflictException("Email already used.");
         }
     }

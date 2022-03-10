@@ -12,7 +12,7 @@ export class MailingService {
     const jsonData = {
       email: email,
       user: userFirstName,
-      deeplink: deeplink,
+      body: deeplink,
     };
     const config = {
       headers: {

@@ -13,8 +13,5 @@ export class Buyer extends BaseEntity {
   lastname: string;
 
   @Column()
-  password: string;
-
-  @Column()
   email: string;
 }
