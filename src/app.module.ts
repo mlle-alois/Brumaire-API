@@ -18,16 +18,16 @@ import { Admin } from "./components/auth/admin.entity";
             },
             entities: [
                 Evaluation,
-                //FAQ,
-                //FAQType,
+                FAQ,
+                FAQType,
                 Admin
             ],
             synchronize: true, // This for development
             autoLoadEntities: true,
         }),
         AuthModule,
-        //EvaluationModule,
-        //FaqModule
+        EvaluationModule,
+        FaqModule
     ],
     controllers: [],
     providers: []
