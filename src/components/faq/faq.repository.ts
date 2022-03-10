@@ -17,7 +17,7 @@ export class FaqRepository extends Repository<Faq> {
     return await getRepository(Faq).findOne(id);
   }
 
-  async createEvaluation(createFaqDto: CreateFaqDto): Promise<Faq> {
+  async createFaq(createFaqDto: CreateFaqDto): Promise<Faq> {
     const {strQuestion, strAnswer, idFaqType} = createFaqDto;
 
     const faq = new Faq();

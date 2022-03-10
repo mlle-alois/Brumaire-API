@@ -22,11 +22,6 @@ export class FaqTypeController {
     return this.faqTypeService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateFaqTypeDto: UpdateFaqTypeDto) {
-    return this.faqTypeService.update(+id, updateFaqTypeDto);
-  }
-
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.faqTypeService.remove(+id);
