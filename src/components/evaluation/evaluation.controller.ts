@@ -12,7 +12,6 @@ export class EvaluationController {
   @Post()
   @UseInterceptors(FileInterceptor("picture"))
   create(
-    user: {email: string},
     @UploadedFile() file: Express.Multer.File,
     @Body() createEvaluationDto: CreateEvaluationDto
   ) {
