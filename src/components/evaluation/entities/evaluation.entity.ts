@@ -22,7 +22,7 @@ export class Evaluation extends BaseEntity {
   @Column()
   handlingScore: number;
 
-  @Column("DOUBLE")
+  @Column("float")
   averageScore: number;
 
   @Column({
