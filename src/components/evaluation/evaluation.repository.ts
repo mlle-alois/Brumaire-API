@@ -1,7 +1,6 @@
 import { EntityRepository, getRepository, Repository } from "typeorm";
-import { Logger } from "@nestjs/common";
+import { BadRequestException, Logger } from "@nestjs/common";
 import { Evaluation } from "./entities/evaluation.entity";
-import { UpdateEvaluationDto } from "./dto/update-evaluation.dto";
 import { CreateEvaluationWithPictureDto } from "./dto/create-evaluation-with-picture.dto";
 
 @EntityRepository(Evaluation)
@@ -18,17 +17,22 @@ export class EvaluationRepository extends Repository<Evaluation> {
 
   async createEvaluation(createEvaluationDto: CreateEvaluationWithPictureDto): Promise<Evaluation> {
     const { strTitle, strContent, strPictureURL } = createEvaluationDto;
-    let { intScore } = createEvaluationDto;
+    let { intAutonomyScore, intHandlingScore, intDeliveryScore } = createEvaluationDto;
 
-    if (intScore > 5)
-      intScore = 5;
-    if (intScore < 0)
-      intScore = 0;
+    if (intAutonomyScore > 5) intAutonomyScore = 5;
+    if (intAutonomyScore < 0) intAutonomyScore = 0;
+    if (intHandlingScore > 5) intHandlingScore = 5;
+    if (intHandlingScore < 0) intHandlingScore = 0;
+    if (intDeliveryScore > 5) intDeliveryScore = 5;
+    if (intDeliveryScore < 0) intDeliveryScore = 0;
 
     const evaluation = new Evaluation();
     evaluation.title = strTitle;
     evaluation.content = strContent;
-    evaluation.score = intScore;
+    evaluation.autonomyScore = intAutonomyScore;
+    evaluation.handlingScore = intHandlingScore;
+    evaluation.deliveryScore = intDeliveryScore;
+    evaluation.averageScore = Math.round((intAutonomyScore + intHandlingScore + intDeliveryScore) / 3);
     evaluation.pictureURL = strPictureURL;
     evaluation.creationDate = new Date(Date.now());
 
@@ -38,29 +42,7 @@ export class EvaluationRepository extends Repository<Evaluation> {
       return evaluation;
     } catch (err) {
       console.log(err);
-      throw err;
+      throw new BadRequestException();
     }
   }
-
-  async updateEvaluation(id: number, updateEvaluation: UpdateEvaluationDto): Promise<Evaluation> {
-    const { strTitle, strContent, intScore } = updateEvaluation;
-
-    const evaluation = await getRepository(Evaluation).findOne(id);
-    evaluation.title = strTitle === null ? evaluation.title : strTitle;
-    evaluation.content = strContent === null ? evaluation.content : strContent;
-    evaluation.score = intScore === null ? evaluation.score : intScore;
-    evaluation.pictureURL = "strPictureURL" === null ? evaluation.pictureURL : "strPictureURL";
-    evaluation.creationDate = new Date(Date.now());
-
-    try {
-      await getRepository(Evaluation).save(evaluation);
-      this.logger.debug(`Successfully Updated Evaluation!`);
-      return evaluation;
-    } catch (err) {
-      console.log(err);
-      return err;
-    }
-  }
-
-
 }

@@ -4,6 +4,8 @@ export class CreateEvaluationDto {
 
   strContent: string;
 
-  intScore: number;
+  intAutonomyScore: number;
+  intDeliveryScore: number;
+  intHandlingScore: number;
 
 }
