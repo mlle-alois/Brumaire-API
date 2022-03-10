@@ -6,6 +6,8 @@ import { FaqModule } from './components/faq/faq.module';
 import { Faq } from './components/faq/entities/faq.entity';
 import { FaqType } from './components/faq-type/entities/faq-type.entity';
 import { FaqTypeModule } from './components/faq-type/faq-type.module';
+import { Admin } from './components/auth/admin.entity';
+import { AuthModule } from './components/auth/auth.module';
 
 @Module({
   imports: [
@@ -16,6 +18,7 @@ import { FaqTypeModule } from './components/faq-type/faq-type.module';
         rejectUnauthorized: false,
       },
       entities: [
+        Admin,
         Evaluation,
         Faq,
         FaqType
@@ -23,6 +26,7 @@ import { FaqTypeModule } from './components/faq-type/faq-type.module';
       synchronize: true, // This for development
       autoLoadEntities: true,
     }),
+    AuthModule,
     EvaluationModule,
     FaqModule,
     FaqTypeModule
