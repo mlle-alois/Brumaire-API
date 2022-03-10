@@ -4,7 +4,9 @@ export class CreateEvaluationWithPictureDto {
 
   strContent: string;
 
-  intScore: number;
+  intAutonomyScore: number;
+  intDeliveryScore: number;
+  intHandlingScore: number;
 
   strPictureURL: string;
 }

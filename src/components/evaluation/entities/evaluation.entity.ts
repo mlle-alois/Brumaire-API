@@ -13,7 +13,16 @@ export class Evaluation extends BaseEntity {
   content: string;
 
   @Column()
-  score: number;
+  autonomyScore: number;
+
+  @Column()
+  deliveryScore: number;
+
+  @Column()
+  handlingScore: number;
+
+  @Column()
+  averageScore: number;
 
   @Column()
   pictureURL: string;

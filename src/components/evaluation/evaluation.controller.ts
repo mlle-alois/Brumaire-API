@@ -6,14 +6,18 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { HttpService } from '@nestjs/axios';
 import { MailingService } from '../../mailing/mailing.service';
 
-@Controller('evaluation')
+@Controller("evaluation")
 export class EvaluationController {
   constructor(private readonly evaluationService: EvaluationService, private mailingService: MailingService) {
   }
 
   @Post()
-  @UseInterceptors(FileInterceptor('picture'))
-  create(@UploadedFile() file: Express.Multer.File, @Body() createEvaluationDto: CreateEvaluationDto) {
+  @UseInterceptors(FileInterceptor("picture"))
+  create(
+    user: {email: string},
+    @UploadedFile() file: Express.Multer.File,
+    @Body() createEvaluationDto: CreateEvaluationDto
+  ) {
     return this.evaluationService.create(createEvaluationDto, file);
   }
 
@@ -32,18 +36,13 @@ export class EvaluationController {
     return this.evaluationService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @Get(":id")
+  findOne(@Param("id") id: string) {
     return this.evaluationService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateEvaluationDto: UpdateEvaluationDto) {
-    return this.evaluationService.update(+id, updateEvaluationDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
+  @Delete(":id")
+  remove(@Param("id") id: string) {
     return this.evaluationService.remove(+id);
   }
 }

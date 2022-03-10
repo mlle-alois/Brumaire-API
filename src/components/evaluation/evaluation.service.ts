@@ -1,9 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { CreateEvaluationDto } from './dto/create-evaluation.dto';
-import { UpdateEvaluationDto } from './dto/update-evaluation.dto';
-import { InjectRepository } from '@nestjs/typeorm';
-import { EvaluationRepository } from './evaluation.repository';
-import { InjectS3, S3 } from 'nestjs-s3';
+import { Injectable } from "@nestjs/common";
+import { CreateEvaluationDto } from "./dto/create-evaluation.dto";
+import { InjectRepository } from "@nestjs/typeorm";
+import { EvaluationRepository } from "./evaluation.repository";
+import { InjectS3, S3 } from "nestjs-s3";
 
 @Injectable()
 export class EvaluationService {
@@ -27,10 +26,6 @@ export class EvaluationService {
 
   findOne(id: number) {
     return `This action returns a #${id} evaluation`;
-  }
-
-  update(id: number, updateEvaluationDto: UpdateEvaluationDto) {
-    return this.evaluationRepository.updateEvaluation(id, updateEvaluationDto);
   }
 
   remove(id: number) {
