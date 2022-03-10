@@ -6,6 +6,4 @@ export class CreateEvaluationDto {
 
   intScore: number;
 
-  strPictureURL: string;
-
 }
