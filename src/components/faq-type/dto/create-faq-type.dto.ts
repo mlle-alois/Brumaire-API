@@ -1,1 +1,5 @@
-export class CreateFaqTypeDto {}
+export class CreateFaqTypeDto {
+
+  faqType: string;
+
+}

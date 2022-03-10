@@ -7,6 +7,7 @@ import { EvaluationRepository } from './evaluation.repository';
 @Module({
   imports: [TypeOrmModule.forFeature([EvaluationRepository])],
   controllers: [EvaluationController],
-  providers: [EvaluationService]
+  providers: [EvaluationService],
 })
-export class EvaluationModule {}
+export class EvaluationModule {
+}

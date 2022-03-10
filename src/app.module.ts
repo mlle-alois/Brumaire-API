@@ -9,6 +9,8 @@ import { FaqTypeModule } from './components/faq-type/faq-type.module';
 import { Admin } from './components/auth/admin.entity';
 import { AuthModule } from './components/auth/auth.module';
 import { S3Module } from 'nestjs-s3';
+import { MailingService } from './mailing/mailing.service';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
@@ -18,8 +20,8 @@ import { S3Module } from 'nestjs-s3';
         secretAccessKey: process.env.SECRET_KEY,
         endpoint: process.env.ENDPOINT,
         s3ForcePathStyle: true,
-        signatureVersion: "v4"
-      }
+        signatureVersion: 'v4',
+      },
     }),
     TypeOrmModule.forRoot({
       url: process.env.DATABASE_URL,
@@ -31,7 +33,7 @@ import { S3Module } from 'nestjs-s3';
         Admin,
         Evaluation,
         Faq,
-        FaqType
+        FaqType,
       ],
       synchronize: true, // This for development
       autoLoadEntities: true,
@@ -39,9 +41,11 @@ import { S3Module } from 'nestjs-s3';
     AuthModule,
     EvaluationModule,
     FaqModule,
-    FaqTypeModule
+    FaqTypeModule,
+    HttpModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [MailingService],
 })
-export class AppModule {}
+export class AppModule {
+}

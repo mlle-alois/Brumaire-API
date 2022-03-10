@@ -7,6 +7,7 @@ import { FaqTypeRepository } from './faq-type.repository';
 @Module({
   imports: [TypeOrmModule.forFeature([FaqTypeRepository])],
   controllers: [FaqTypeController],
-  providers: [FaqTypeService]
+  providers: [FaqTypeService],
 })
-export class FaqTypeModule {}
+export class FaqTypeModule {
+}

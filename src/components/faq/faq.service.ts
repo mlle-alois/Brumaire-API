@@ -12,7 +12,7 @@ export class FaqService {
   }
 
   create(createFaqDto: CreateFaqDto) {
-    return this.faqRepository.createEvaluation(createFaqDto);
+    return this.faqRepository.createFaq(createFaqDto);
   }
 
   findAll() {
