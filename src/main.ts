@@ -11,14 +11,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors({
-    origin: [
-      'http://localhost:3000',
-      'https://deployed-app.com',
-      'http://localhost:4200',
-      'http://localhost',
-      'http://127.0.0.1',
-      'http://127.0.0.1:4200',
-    ],
+    origin: true,
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
     preflightContinue: false,
     optionsSuccessStatus: 200,
@@ -30,7 +23,7 @@ async function bootstrap() {
   app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
   app.use(cookieParser());
 
-  const port = 3000;
+  const port = process.env.PORT;
   await app.listen(port, '127.0.0.1');
   logger.log(`Application started on port ${port}`);
   logger.log(app.getUrl());
