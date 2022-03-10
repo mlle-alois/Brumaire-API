@@ -1,20 +1,12 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Faq {
+export class FaqType {
 
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  question: string;
+  libelle: string;
 
-  @Column()
-  answer: string;
-
-  @Column()
-  faqType: number;
-
-  @Column()
-  createDate: Date;
 }

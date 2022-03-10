@@ -7,6 +7,7 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
+import * as reflectMetadata from 'reflect-metadata';
 
 async function bootstrap() {
   const logger = new Logger('bootstrap');

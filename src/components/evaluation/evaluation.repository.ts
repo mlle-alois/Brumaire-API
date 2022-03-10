@@ -38,7 +38,7 @@ export class EvaluationRepository extends Repository<Evaluation> {
       return evaluation;
     } catch (err) {
       console.log(err);
-      return err;
+      throw err;
     }
   }
 
