@@ -31,6 +31,11 @@ export class EvaluationController {
     return this.evaluationService.findOne(+id);
   }
 
+  @Get("/average")
+  findAverage() {
+    return this.evaluationService.findAverage();
+  }
+
   @Delete(":id")
   remove(@Param("id") id: string) {
     return this.evaluationService.remove(+id);
