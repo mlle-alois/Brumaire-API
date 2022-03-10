@@ -1,12 +1,12 @@
-import { EntityRepository, getRepository, Repository } from "typeorm";
-import { Logger } from "@nestjs/common";
-import { Evaluation } from "./entities/evaluation.entity";
-import { UpdateEvaluationDto } from "./dto/update-evaluation.dto";
-import { CreateEvaluationWithPictureDto } from "./dto/create-evaluation-with-picture.dto";
+import { EntityRepository, getRepository, Repository } from 'typeorm';
+import { Logger } from '@nestjs/common';
+import { Evaluation } from './entities/evaluation.entity';
+import { UpdateEvaluationDto } from './dto/update-evaluation.dto';
+import { CreateEvaluationWithPictureDto } from './dto/create-evaluation-with-picture.dto';
 
 @EntityRepository(Evaluation)
 export class EvaluationRepository extends Repository<Evaluation> {
-  private logger = new Logger("EvaluationController");
+  private logger = new Logger('EvaluationController');
 
   async getAll(): Promise<Evaluation[]> {
     return await getRepository(Evaluation).find();
@@ -49,7 +49,7 @@ export class EvaluationRepository extends Repository<Evaluation> {
     evaluation.title = strTitle === null ? evaluation.title : strTitle;
     evaluation.content = strContent === null ? evaluation.content : strContent;
     evaluation.score = intScore === null ? evaluation.score : intScore;
-    evaluation.pictureURL = "strPictureURL" === null ? evaluation.pictureURL : "strPictureURL";
+    evaluation.pictureURL = 'strPictureURL' === null ? evaluation.pictureURL : 'strPictureURL';
     evaluation.creationDate = new Date(Date.now());
 
     try {

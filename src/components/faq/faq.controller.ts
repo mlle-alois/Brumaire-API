@@ -5,7 +5,8 @@ import { UpdateFaqDto } from './dto/update-faq.dto';
 
 @Controller('faq')
 export class FaqController {
-  constructor(private readonly faqService: FaqService) {}
+  constructor(private readonly faqService: FaqService) {
+  }
 
   @Post()
   create(@Body() createFaqDto: CreateFaqDto) {

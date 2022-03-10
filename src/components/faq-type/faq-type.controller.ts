@@ -1,11 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { FaqTypeService } from './faq-type.service';
 import { CreateFaqTypeDto } from './dto/create-faq-type.dto';
-import { UpdateFaqTypeDto } from './dto/update-faq-type.dto';
 
 @Controller('faq-type')
 export class FaqTypeController {
-  constructor(private readonly faqTypeService: FaqTypeService) {}
+  constructor(private readonly faqTypeService: FaqTypeService) {
+  }
 
   @Post()
   create(@Body() createFaqTypeDto: CreateFaqTypeDto) {

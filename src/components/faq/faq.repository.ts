@@ -18,7 +18,7 @@ export class FaqRepository extends Repository<Faq> {
   }
 
   async createFaq(createFaqDto: CreateFaqDto): Promise<Faq> {
-    const {strQuestion, strAnswer, idFaqType} = createFaqDto;
+    const { strQuestion, strAnswer, idFaqType } = createFaqDto;
 
     const faq = new Faq();
     faq.question = strQuestion;
@@ -37,12 +37,12 @@ export class FaqRepository extends Repository<Faq> {
   }
 
   async updateFaq(id: number, updateFaqDto: UpdateFaqDto): Promise<Faq> {
-    const {strAnswer, strQuestion, idFaqType} = updateFaqDto;
+    const { strAnswer, strQuestion, idFaqType } = updateFaqDto;
 
     const faq = await getRepository(Faq).findOne(id);
     faq.question = strQuestion === null ? faq.question : strQuestion;
     faq.answer = strAnswer === null ? faq.answer : strAnswer;
-    faq.faqType = idFaqType  === null ? faq.faqType : await getRepository(FaqType).findOne(idFaqType);
+    faq.faqType = idFaqType === null ? faq.faqType : await getRepository(FaqType).findOne(idFaqType);
     faq.createDate = new Date(Date.now());
 
     try {

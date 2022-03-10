@@ -1,9 +1,9 @@
-import { Injectable } from "@nestjs/common";
-import { CreateEvaluationDto } from "./dto/create-evaluation.dto";
-import { UpdateEvaluationDto } from "./dto/update-evaluation.dto";
-import { InjectRepository } from "@nestjs/typeorm";
-import { EvaluationRepository } from "./evaluation.repository";
-import { InjectS3, S3 } from "nestjs-s3";
+import { Injectable } from '@nestjs/common';
+import { CreateEvaluationDto } from './dto/create-evaluation.dto';
+import { UpdateEvaluationDto } from './dto/update-evaluation.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { EvaluationRepository } from './evaluation.repository';
+import { InjectS3, S3 } from 'nestjs-s3';
 
 @Injectable()
 export class EvaluationService {
@@ -16,7 +16,7 @@ export class EvaluationService {
   async create(createEvaluationDto: CreateEvaluationDto, file: Express.Multer.File) {
     const data = {
       ...createEvaluationDto,
-      strPictureURL: await this.uploadFile(file)
+      strPictureURL: await this.uploadFile(file),
     };
     return this.evaluationRepository.createEvaluation(data);
   }
@@ -42,15 +42,15 @@ export class EvaluationService {
     await this.s3.upload({
       Bucket: process.env.BUCKET,
       Key: key,
-      Body: file.buffer
+      Body: file.buffer,
     }).promise();
 
     return this.s3.getSignedUrlPromise(
-      "getObject", {
+      'getObject', {
         Bucket: process.env.BUCKET,
         Key: key,
-        Expires: 60 * 60 * 24 * 7
-      }
+        Expires: 60 * 60 * 24 * 7,
+      },
     );
   }
 }

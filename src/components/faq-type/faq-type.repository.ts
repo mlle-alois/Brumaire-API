@@ -16,7 +16,7 @@ export class FaqTypeRepository extends Repository<FaqType> {
   }
 
   async createFaqType(createFaqTypeDto: CreateFaqTypeDto): Promise<FaqType> {
-    const {faqType} = createFaqTypeDto;
+    const { faqType } = createFaqTypeDto;
 
     const type = new FaqType();
     type.libelle = faqType;

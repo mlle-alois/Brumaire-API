@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateFaqTypeDto } from './dto/create-faq-type.dto';
-import { UpdateFaqTypeDto } from './dto/update-faq-type.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FaqTypeRepository } from './faq-type.repository';
 

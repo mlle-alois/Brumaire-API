@@ -1,12 +1,13 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, UploadedFile, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { EvaluationService } from './evaluation.service';
 import { CreateEvaluationDto } from './dto/create-evaluation.dto';
 import { UpdateEvaluationDto } from './dto/update-evaluation.dto';
-import { FileInterceptor } from "@nestjs/platform-express";
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('evaluation')
 export class EvaluationController {
-  constructor(private readonly evaluationService: EvaluationService) {}
+  constructor(private readonly evaluationService: EvaluationService) {
+  }
 
   @Post()
   @UseInterceptors(FileInterceptor('picture'))

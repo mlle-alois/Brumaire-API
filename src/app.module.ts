@@ -18,8 +18,8 @@ import { S3Module } from 'nestjs-s3';
         secretAccessKey: process.env.SECRET_KEY,
         endpoint: process.env.ENDPOINT,
         s3ForcePathStyle: true,
-        signatureVersion: "v4"
-      }
+        signatureVersion: 'v4',
+      },
     }),
     TypeOrmModule.forRoot({
       url: process.env.DATABASE_URL,
@@ -31,7 +31,7 @@ import { S3Module } from 'nestjs-s3';
         Admin,
         Evaluation,
         Faq,
-        FaqType
+        FaqType,
       ],
       synchronize: true, // This for development
       autoLoadEntities: true,
@@ -39,9 +39,10 @@ import { S3Module } from 'nestjs-s3';
     AuthModule,
     EvaluationModule,
     FaqModule,
-    FaqTypeModule
+    FaqTypeModule,
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule {
+}
