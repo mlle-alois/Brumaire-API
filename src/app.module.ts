@@ -11,6 +11,8 @@ import { AuthModule } from './components/auth/auth.module';
 import { S3Module } from 'nestjs-s3';
 import { MailingService } from './mailing/mailing.service';
 import { HttpModule } from '@nestjs/axios';
+import { Buyer } from './components/buyer/buyer.entity';
+import { BuyerModule } from './components/buyer/buyer.module';
 
 @Module({
   imports: [
@@ -31,6 +33,7 @@ import { HttpModule } from '@nestjs/axios';
       },
       entities: [
         Admin,
+        Buyer,
         Evaluation,
         Faq,
         FaqType
@@ -39,6 +42,7 @@ import { HttpModule } from '@nestjs/axios';
       autoLoadEntities: true,
     }),
     AuthModule,
+    BuyerModule,
     EvaluationModule,
     FaqModule,
     FaqTypeModule,
