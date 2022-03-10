@@ -1,4 +1,4 @@
-import { Buyer } from 'src/components/buyer/buyer.entity';
+import { Buyer } from '../../buyer/buyer.entity';
 import { BaseEntity, Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

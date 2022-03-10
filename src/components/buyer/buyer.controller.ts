@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { MailingService } from "src/mailing/mailing.service";
+import { MailingService } from "../../mailing/mailing.service";
 import { BuyerService } from "./buyer.service";
 import { AddBuyer } from "./dto/add-buyer.dto";
 
