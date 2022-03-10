@@ -9,4 +9,6 @@ export class CreateEvaluationWithPictureDto {
   intHandlingScore: number;
 
   strPictureURL: string;
+
+  buyerId: number
 }
