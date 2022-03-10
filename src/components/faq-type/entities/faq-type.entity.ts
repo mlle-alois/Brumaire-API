@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Faq } from '../../faq/entities/faq.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class FaqType {
@@ -9,4 +10,6 @@ export class FaqType {
   @Column()
   libelle: string;
 
+  @OneToMany(() => Faq, faq => faq.faqType)
+  faq: Faq[];
 }

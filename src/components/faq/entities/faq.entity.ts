@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { FaqType } from '../../faq-type/entities/faq-type.entity';
 
 @Entity()
 export class Faq {
@@ -12,8 +13,8 @@ export class Faq {
   @Column()
   answer: string;
 
-  @Column()
-  faqType: number;
+  @ManyToOne(() => FaqType, { eager: true })
+  faqType: FaqType;
 
   @Column()
   createDate: Date;

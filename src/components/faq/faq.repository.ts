@@ -23,7 +23,7 @@ export class FaqRepository extends Repository<Faq> {
     const faq = new Faq();
     faq.question = strQuestion;
     faq.answer = strAnswer;
-    faq.faqType = await getRepository(FaqType).findOne(idFaqType).then((type) => {return type.id});
+    faq.faqType = await getRepository(FaqType).findOne(idFaqType);
     faq.createDate = new Date(Date.now());
 
     try {
@@ -42,7 +42,7 @@ export class FaqRepository extends Repository<Faq> {
     const faq = await getRepository(Faq).findOne(id);
     faq.question = strQuestion === null ? faq.question : strQuestion;
     faq.answer = strAnswer === null ? faq.answer : strAnswer;
-    faq.faqType = idFaqType  === null ? faq.faqType : await getRepository(FaqType).findOne(idFaqType).then((type) => {return type.id});
+    faq.faqType = idFaqType  === null ? faq.faqType : await getRepository(FaqType).findOne(idFaqType);
     faq.createDate = new Date(Date.now());
 
     try {

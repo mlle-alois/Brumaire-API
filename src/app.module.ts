@@ -8,9 +8,19 @@ import { FaqType } from './components/faq-type/entities/faq-type.entity';
 import { FaqTypeModule } from './components/faq-type/faq-type.module';
 import { Admin } from './components/auth/admin.entity';
 import { AuthModule } from './components/auth/auth.module';
+import { S3Module } from 'nestjs-s3';
 
 @Module({
   imports: [
+    S3Module.forRoot({
+      config: {
+        accessKeyId: process.env.ACCESS_KEY,
+        secretAccessKey: process.env.SECRET_KEY,
+        endpoint: process.env.ENDPOINT,
+        s3ForcePathStyle: true,
+        signatureVersion: "v4"
+      }
+    }),
     TypeOrmModule.forRoot({
       url: process.env.DATABASE_URL,
       type: 'postgres',
