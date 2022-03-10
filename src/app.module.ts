@@ -9,6 +9,8 @@ import { FaqTypeModule } from './components/faq-type/faq-type.module';
 import { Admin } from './components/auth/admin.entity';
 import { AuthModule } from './components/auth/auth.module';
 import { S3Module } from 'nestjs-s3';
+import { MailingService } from './mailing/mailing.service';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
@@ -40,9 +42,10 @@ import { S3Module } from 'nestjs-s3';
     EvaluationModule,
     FaqModule,
     FaqTypeModule,
+    HttpModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [MailingService],
 })
 export class AppModule {
 }
