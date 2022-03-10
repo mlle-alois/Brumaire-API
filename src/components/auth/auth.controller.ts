@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from "@nestjs/common";
+import { Body, Controller, Get, Post } from "@nestjs/common";
 import { AuthService } from "./auth.service";
 import { IdentitfySelfDto } from "./dto/identifySelf.dto";
 
@@ -9,5 +9,11 @@ export class AuthController {
     @Post("/signup")
     async signUp(@Body() body: IdentitfySelfDto): Promise<void> {
         return this.service.signUp(body);
+    }
+
+    @Post("/signin")
+    async signIn(@Body() body: IdentitfySelfDto): Promise<{ token: string }> {
+        const token = await this.service.signIn(body);
+        return { token };
     }
 }
