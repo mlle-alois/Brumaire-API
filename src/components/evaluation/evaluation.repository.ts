@@ -17,7 +17,13 @@ export class EvaluationRepository extends Repository<Evaluation> {
   }
 
   async createEvaluation(createEvaluationDto: CreateEvaluationDto): Promise<Evaluation> {
-    const {strTitle, strContent, intScore, strPictureURL} = createEvaluationDto;
+    const {strTitle, strContent, strPictureURL} = createEvaluationDto;
+    let {intScore} = createEvaluationDto;
+
+    if (intScore > 5)
+      intScore = 5;
+    if (intScore < 0)
+      intScore = 0;
 
     const evaluation = new Evaluation();
     evaluation.title = strTitle;
