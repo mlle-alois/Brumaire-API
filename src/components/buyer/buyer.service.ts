@@ -10,7 +10,12 @@ export class BuyerService {
         private readonly repository: BuyerRepository
     ) {}
 
-    async add(dto: AddBuyer): Promise<void> {
-        return this.repository.add(dto.firstname, dto.lastname, dto.email);
+    async add(dto: AddBuyer): Promise<{ id: number, firstname: string, email: string }> {
+        const buyer = await this.repository.add(dto.firstname, dto.lastname, dto.email);
+        return {
+            id: buyer.id,
+            firstname: buyer.firstname,
+            email: buyer.email
+        }
     }
 }

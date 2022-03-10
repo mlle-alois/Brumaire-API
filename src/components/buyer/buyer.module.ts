@@ -7,6 +7,7 @@ import { MailingService } from "src/mailing/mailing.service";
 import { BuyerController } from "./buyer.controller";
 import { BuyerRepository } from "./buyer.repository";
 import { BuyerService } from "./buyer.service";
+import { JwtStrategy } from "./strategy/jwt.strategy";
 
 @Module({
     imports: [
@@ -21,6 +22,7 @@ import { BuyerService } from "./buyer.service";
         MailingModule
     ],
     controllers: [BuyerController],
-    providers: [BuyerService, JwtService, MailingService]
+    providers: [BuyerService, JwtService, MailingService],
+    exports: [JwtStrategy, PassportModule]
 })
 export class BuyerModule {}
