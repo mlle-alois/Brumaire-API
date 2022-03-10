@@ -3,6 +3,7 @@ import { CreateEvaluationDto } from "./dto/create-evaluation.dto";
 import { InjectRepository } from "@nestjs/typeorm";
 import { EvaluationRepository } from "./evaluation.repository";
 import { InjectS3, S3 } from "nestjs-s3";
+import { Evaluation } from './entities/evaluation.entity';
 
 @Injectable()
 export class EvaluationService {
@@ -25,11 +26,11 @@ export class EvaluationService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} evaluation`;
+    return this.evaluationRepository.findOne(id);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} evaluation`;
+    return this.evaluationRepository.delete(id);
   }
 
   private async uploadFile(file: Express.Multer.File): Promise<string> {
@@ -47,5 +48,15 @@ export class EvaluationService {
         Expires: 60 * 60 * 24 * 7,
       },
     );
+  }
+
+  async findAverage() {
+    const evaluations: Evaluation[] = await this.evaluationRepository.getAll();
+    const sum = evaluations.map(({ averageScore }) => {
+      return averageScore
+    })
+      .reduce((a, b) => a + b, 0);
+
+    return sum / evaluations.length;
   }
 }
