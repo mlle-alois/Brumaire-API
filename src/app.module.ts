@@ -20,7 +20,7 @@ import { HttpModule } from '@nestjs/axios';
         secretAccessKey: process.env.SECRET_KEY,
         endpoint: process.env.ENDPOINT,
         s3ForcePathStyle: true,
-        signatureVersion: 'v4',
+        signatureVersion: "v4",
       },
     }),
     TypeOrmModule.forRoot({
@@ -33,7 +33,7 @@ import { HttpModule } from '@nestjs/axios';
         Admin,
         Evaluation,
         Faq,
-        FaqType,
+        FaqType
       ],
       synchronize: true, // This for development
       autoLoadEntities: true,
@@ -42,7 +42,7 @@ import { HttpModule } from '@nestjs/axios';
     EvaluationModule,
     FaqModule,
     FaqTypeModule,
-    HttpModule,
+    HttpModule
   ],
   controllers: [],
   providers: [MailingService],
