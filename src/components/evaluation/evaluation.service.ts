@@ -21,8 +21,12 @@ export class EvaluationService {
     return this.evaluationRepository.createEvaluation(data);
   }
 
-  findAll() {
-    return this.evaluationRepository.getAll();
+  async findAll() {
+    const evaluations: Evaluation[] = await this.evaluationRepository.getAll().then(evals => {
+      return evals;
+    });
+
+    return evaluations.sort((n1,n2) => n2.creationDate.getTime() - n1.creationDate.getTime());
   }
 
   findOne(id: number) {
