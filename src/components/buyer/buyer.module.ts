@@ -1,14 +1,26 @@
 import { Module } from "@nestjs/common";
+import { JwtModule, JwtService } from "@nestjs/jwt";
+import { PassportModule } from "@nestjs/passport";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { MailingModule } from "src/mailing/mailing.module";
+import { MailingService } from "src/mailing/mailing.service";
 import { BuyerController } from "./buyer.controller";
 import { BuyerRepository } from "./buyer.repository";
 import { BuyerService } from "./buyer.service";
 
 @Module({
     imports: [
-        TypeOrmModule.forFeature([BuyerRepository])
+        PassportModule.register({ defaultStrategy: 'jwt' }),
+        TypeOrmModule.forFeature([BuyerRepository]),
+        JwtModule.register({
+            secret: process.env.SECRET,
+            signOptions: {
+              expiresIn: 3 * 60,
+            },
+        }),
+        MailingModule
     ],
     controllers: [BuyerController],
-    providers: [BuyerService]
+    providers: [BuyerService, JwtService, MailingService]
 })
 export class BuyerModule {}
