@@ -12,10 +12,11 @@ export class EvaluationService {
               @InjectS3() private readonly s3: S3) {
   }
 
-  async create(createEvaluationDto: CreateEvaluationDto, file: Express.Multer.File) {
+  async create(createEvaluationDto: CreateEvaluationDto, file: Express.Multer.File, buyerId: number) {
     const data = {
       ...createEvaluationDto,
-      strPictureURL: await this.uploadFile(file),
+      strPictureURL: file ? await this.uploadFile(file) : null,
+      buyerId
     };
     return this.evaluationRepository.createEvaluation(data);
   }

@@ -2,9 +2,11 @@ import { EntityRepository, getRepository, Repository } from "typeorm";
 import { BadRequestException, Logger } from "@nestjs/common";
 import { Evaluation } from "./entities/evaluation.entity";
 import { CreateEvaluationWithPictureDto } from "./dto/create-evaluation-with-picture.dto";
+import { Buyer } from "../buyer/buyer.entity";
 
 @EntityRepository(Evaluation)
 export class EvaluationRepository extends Repository<Evaluation> {
+  
   private logger = new Logger('EvaluationController');
 
   async getAll(): Promise<Evaluation[]> {
@@ -37,7 +39,8 @@ export class EvaluationRepository extends Repository<Evaluation> {
     evaluation.creationDate = new Date(Date.now());
 
     try {
-      await getRepository(Evaluation).save(evaluation);
+      evaluation.buyer = await getRepository(Buyer).findOne({ id: createEvaluationDto.buyerId });
+      await evaluation.save();
       this.logger.debug(`Successfully Saved Evaluation!`);
       return evaluation;
     } catch (err) {
@@ -45,7 +48,4 @@ export class EvaluationRepository extends Repository<Evaluation> {
       throw new BadRequestException();
     }
   }
-
-
-
 }

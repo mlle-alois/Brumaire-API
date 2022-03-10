@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Buyer } from 'src/components/buyer/buyer.entity';
+import { BaseEntity, Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Evaluation extends BaseEntity {
@@ -24,9 +25,15 @@ export class Evaluation extends BaseEntity {
   @Column()
   averageScore: number;
 
-  @Column()
+  @Column({
+    nullable: true
+  })
   pictureURL: string;
 
   @Column()
   creationDate: Date;
+
+  @OneToOne(() => Buyer)
+  @JoinColumn()
+  buyer: Buyer;
 }

@@ -1,7 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Req, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { EvaluationService } from './evaluation.service';
 import { CreateEvaluationDto } from './dto/create-evaluation.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller("evaluation")
 export class EvaluationController {
@@ -9,12 +10,15 @@ export class EvaluationController {
   }
 
   @Post()
+  @UseGuards(AuthGuard())
   @UseInterceptors(FileInterceptor("picture"))
   create(
     @UploadedFile() file: Express.Multer.File,
-    @Body() createEvaluationDto: CreateEvaluationDto
+    @Body() createEvaluationDto: CreateEvaluationDto,
+    @Req() req
   ) {
-    return this.evaluationService.create(createEvaluationDto, file);
+    const user = req.user;
+    return this.evaluationService.create(createEvaluationDto, file, user.id);
   }
 
   @Get()
