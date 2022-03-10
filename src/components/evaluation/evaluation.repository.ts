@@ -46,25 +46,6 @@ export class EvaluationRepository extends Repository<Evaluation> {
     }
   }
 
-  async updateEvaluation(id: number, updateEvaluation: UpdateEvaluationDto): Promise<Evaluation> {
-    const { strTitle, strContent, intScore } = updateEvaluation;
-
-    const evaluation = await getRepository(Evaluation).findOne(id);
-    evaluation.title = strTitle === null ? evaluation.title : strTitle;
-    evaluation.content = strContent === null ? evaluation.content : strContent;
-    evaluation.score = intScore === null ? evaluation.score : intScore;
-    evaluation.pictureURL = 'strPictureURL' === null ? evaluation.pictureURL : 'strPictureURL';
-    evaluation.creationDate = new Date(Date.now());
-
-    try {
-      await getRepository(Evaluation).save(evaluation);
-      this.logger.debug(`Successfully Updated Evaluation!`);
-      return evaluation;
-    } catch (err) {
-      console.log(err);
-      return err;
-    }
-  }
 
 
 }

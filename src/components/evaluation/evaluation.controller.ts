@@ -1,9 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { EvaluationService } from './evaluation.service';
 import { CreateEvaluationDto } from './dto/create-evaluation.dto';
-import { UpdateEvaluationDto } from './dto/update-evaluation.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { HttpService } from '@nestjs/axios';
 import { MailingService } from '../../mailing/mailing.service';
 
 @Controller("evaluation")
