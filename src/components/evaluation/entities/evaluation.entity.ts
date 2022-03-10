@@ -20,5 +20,4 @@ export class Evaluation extends BaseEntity{
 
   @Column()
   creationDate: Date;
-
 }
