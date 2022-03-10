@@ -1,11 +1,11 @@
 export class CreateEvaluationDto {
 
-  title: string;
+  strTitle: string;
 
-  content: string;
+  strContent: string;
 
-  score: string;
+  intScore: number;
 
-  pictureURL: string;
+  strPictureURL: string;
 
 }

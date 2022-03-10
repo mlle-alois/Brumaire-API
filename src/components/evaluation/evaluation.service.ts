@@ -24,7 +24,7 @@ export class EvaluationService {
   }
 
   update(id: number, updateEvaluationDto: UpdateEvaluationDto) {
-    return `This action updates a #${id} evaluation`;
+    return this.evaluationRepository.updateEvaluation(id, updateEvaluationDto);
   }
 
   remove(id: number) {

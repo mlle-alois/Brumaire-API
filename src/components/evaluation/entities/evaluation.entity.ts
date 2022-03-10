@@ -13,7 +13,7 @@ export class Evaluation extends BaseEntity{
   content: string;
 
   @Column()
-  score: string;
+  score: number;
 
   @Column()
   pictureURL: string;
