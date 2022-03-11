@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from "@nestjs/common";
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { JwtService } from "@nestjs/jwt";
 import { MailingService } from "../../mailing/mailing.service";
 import { BuyerService } from "./buyer.service";

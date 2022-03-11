@@ -56,12 +56,15 @@ export class EvaluationService {
   }
 
   async findAverage() {
-    const evaluations: Evaluation[] = await this.evaluationRepository.getAll();
-    const sum = evaluations.map(({ averageScore }) => {
-      return averageScore
-    })
-      .reduce((a, b) => a + b, 0);
+    const evaluations: Evaluation[] = await this.evaluationRepository.getAll().then(evals => {
+      return evals;
+    });
 
-    return sum / evaluations.length;
+    let sum = 0;
+    evaluations.forEach(e => {
+      sum = sum + e.averageScore;
+    });
+
+    return +((+sum) / (+evaluations.length)).toFixed(2);
   }
 }

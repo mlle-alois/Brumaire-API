@@ -1,8 +1,7 @@
-import { EntityRepository, getRepository, Repository } from "typeorm";
-import { BadRequestException, Logger } from "@nestjs/common";
-import { Evaluation } from "./entities/evaluation.entity";
-import { CreateEvaluationWithPictureDto } from "./dto/create-evaluation-with-picture.dto";
-import { Buyer } from "../buyer/buyer.entity";
+import { EntityRepository, getRepository, Repository } from 'typeorm';
+import { BadRequestException, Logger } from '@nestjs/common';
+import { Evaluation } from './entities/evaluation.entity';
+import { CreateEvaluationWithPictureDto } from './dto/create-evaluation-with-picture.dto';
 
 @EntityRepository(Evaluation)
 export class EvaluationRepository extends Repository<Evaluation> {

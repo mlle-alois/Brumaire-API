@@ -54,14 +54,15 @@ export class EvaluationController {
     return this.evaluationService.findAll();
   }
 
+  @Get("average")
+  findAverage() {
+    return this.evaluationService.findAverage();
+
+  }
+
   @Get(":id")
   findOne(@Param("id") id: string) {
     return this.evaluationService.findOne(+id);
-  }
-
-  @Get("/average")
-  findAverage() {
-    return this.evaluationService.findAverage();
   }
 
   @Delete(":id")
