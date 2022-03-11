@@ -1,4 +1,4 @@
-import { IsNotEmpty } from "class-validator";
+import { IsEmail, IsNotEmpty } from "class-validator";
 
 export class AddBuyer {
     @IsNotEmpty()
@@ -6,5 +6,6 @@ export class AddBuyer {
     @IsNotEmpty()
     lastname: string;
     @IsNotEmpty()
+    @IsEmail()
     email: string;
 }
