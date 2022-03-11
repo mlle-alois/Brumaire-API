@@ -15,7 +15,7 @@ export class MailingService {
       "\" " +
       "target=\"_blank\" style=\"box-sizing: border-box;display:" +
       " inline-block;font-family:arial,helvetica,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF;" +
-      " background-color: #af57d3; border-radius: 23px;-webkit-border-radius: 23px; -moz-border-radius: 23px; width:auto; max-width:100%; " +
+      " background-color: #cec4c4; border-radius: 23px;-webkit-border-radius: 23px; -moz-border-radius: 23px; width:auto; max-width:100%; " +
       "overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;\">\n";
 
     const mailBody = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
@@ -133,7 +133,7 @@ export class MailingService {
       "  <tr>\n" +
       "    <td style=\"padding-right: 0px;padding-left: 0px;\" align=\"center\">\n" +
       "      \n" +
-      "      <img align=\"center\" border=\"0\" src=\"https://i.ibb.co/1L7yrmh/image-1.png\" alt=\"\" title=\"\" style=\"outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 100%;max-width: 480px;\" width=\"480\"/>\n" +
+      "      <img align=\"center\" border=\"0\" src=\"https://i.ibb.co/8gmnbDC/Frame-2-2.png\" alt=\"\" title=\"\" style=\"outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 100%;max-width: 480px;\" width=\"480\"/>\n" +
       "      \n" +
       "    </td>\n" +
       "  </tr>\n" +
@@ -152,7 +152,7 @@ export class MailingService {
       "<div align=\"center\">\n" +
       "  <!--[if mso]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:arial,helvetica,sans-serif;\"><tr><td style=\"font-family:arial,helvetica,sans-serif;\" align=\"center\"><v:roundrect xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"urn:schemas-microsoft-com:office:word\" href=\"https://www.google.com\" style=\"height:34px; v-text-anchor:middle; width:130px;\" arcsize=\"67.5%\" stroke=\"f\" fillcolor=\"#af57d3\"><w:anchorlock/><center style=\"color:#FFFFFF;font-family:arial,helvetica,sans-serif;\"><![endif]-->\n" +
       `${inject}`+
-      "      <span style=\"display:block;padding:10px;line-height:100%;\">Donner votre avis</span>\n" +
+      "      <span style=\"display:block;padding:10px;line-height:100%;\">Donnez votre avis</span>\n" +
       "    </a>\n" +
       "  <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->\n" +
       "</div>\n" +
