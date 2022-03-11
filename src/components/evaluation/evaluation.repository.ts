@@ -28,13 +28,15 @@ export class EvaluationRepository extends Repository<Evaluation> {
     if (intDeliveryScore > 5) intDeliveryScore = 5;
     if (intDeliveryScore < 0) intDeliveryScore = 0;
 
+    const average = +((intAutonomyScore + intHandlingScore + intDeliveryScore) / 3).toFixed(2);
+
     const evaluation = new Evaluation();
     evaluation.title = strTitle;
     evaluation.content = strContent;
     evaluation.autonomyScore = intAutonomyScore;
     evaluation.handlingScore = intHandlingScore;
     evaluation.deliveryScore = intDeliveryScore;
-    evaluation.averageScore = Math.round((intAutonomyScore + intHandlingScore + intDeliveryScore) / 3);
+    evaluation.averageScore = average;
     evaluation.pictureURL = strPictureURL;
     evaluation.creationDate = new Date(Date.now());
 
