@@ -11,11 +11,20 @@ export class BuyerService {
     ) {}
 
     async add(dto: AddBuyer): Promise<{ id: number, firstname: string, email: string }> {
-        const buyer = await this.repository.add(dto.firstname, dto.lastname, dto.email);
+        const check = await this.repository.findOne({ email: dto.email });
+        if (!check) {
+            const buyer = await this.repository.add(dto.firstname, dto.lastname, dto.email);
+            return {
+                id: buyer.id,
+                firstname: buyer.firstname,
+                email: buyer.email
+            }
+        }
+
         return {
-            id: buyer.id,
-            firstname: buyer.firstname,
-            email: buyer.email
+            id: check.id,
+            firstname: check.firstname,
+            email: check.email
         }
     }
 }
