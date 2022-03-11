@@ -37,9 +37,9 @@ export class EvaluationRepository extends Repository<Evaluation> {
     evaluation.averageScore = Math.round((intAutonomyScore + intHandlingScore + intDeliveryScore) / 3);
     evaluation.pictureURL = strPictureURL;
     evaluation.creationDate = new Date(Date.now());
+    evaluation.buyerId = createEvaluationDto.buyerId;
 
     try {
-      evaluation.buyer = await getRepository(Buyer).findOne({ id: createEvaluationDto.buyerId });
       await evaluation.save();
       this.logger.debug(`Successfully Saved Evaluation!`);
       return evaluation;

@@ -33,7 +33,6 @@ export class Evaluation extends BaseEntity {
   @Column()
   creationDate: Date;
 
-  @OneToOne(() => Buyer)
-  @JoinColumn()
-  buyer: Buyer;
+  @Column()
+  buyerId: number;
 }
