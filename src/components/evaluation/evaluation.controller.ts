@@ -36,7 +36,7 @@ export class EvaluationController {
       }
 
       const user = await this.jwtService.verifyAsync(token);
-      const check = await getRepository(Evaluation).findOne({ id: user.id });
+      const check = await getRepository(Evaluation).findOne({ buyerId: user.id });
       if (!check) {
         res.status(301).redirect(301, process.env.FRONT_RATINGS + "ratings?token=" + token);
         return;
