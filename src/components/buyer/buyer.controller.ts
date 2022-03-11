@@ -20,7 +20,7 @@ export class BuyerController {
             email: data.email
         });
 
-        const redirectionUrl = process.env.FRONT_REVIEWS + "?token=" + token;
+        const redirectionUrl = process.env.FRONT_RATINGS + "?token=" + token;
 
         await this.mailing.sendReceivedOrderMail(data.email, data.firstname, redirectionUrl);
     }
