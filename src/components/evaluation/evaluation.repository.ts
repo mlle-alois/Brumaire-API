@@ -29,6 +29,7 @@ export class EvaluationRepository extends Repository<Evaluation> {
     if (intDeliveryScore < 0) intDeliveryScore = 0;
 
     const average = +((intAutonomyScore + intHandlingScore + intDeliveryScore) / 3).toFixed(2);
+    console.log(average);
 
     const evaluation = new Evaluation();
     evaluation.title = strTitle;
